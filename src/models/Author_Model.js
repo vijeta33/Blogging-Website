@@ -36,7 +36,7 @@ const AuthorSchema = new mongoose.Schema({
         },
     }
 
+},{ timestamps: true })
 
-    },{ timestamps: true })
 
 module.exports = mongoose.model('AuthorsDB', AuthorSchema)

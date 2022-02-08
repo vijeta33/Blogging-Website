@@ -42,8 +42,8 @@ const update = async function (req, res) {
     try {
         let decodedUserToken = req.user
         let BlogUser = await BlogsModel.findOne({ _id: req.params.blogId })
-        console.log(decodedUserToken.userId)
-        console.log(BlogUser.authorId)
+        //console.log(decodedUserToken.userId)
+        //console.log(BlogUser.authorId)
 
         if (decodedUserToken.userId == BlogUser.authorId) {
             if (BlogUser) {
@@ -84,7 +84,7 @@ const DeleteBlogs = async function (req, res) {
         if(!BlogUser){
             res.status(404).send({status:false,message:"Blog is not exist"})
         }
-        //userid is equals to author id. for reference see the token genereation api.
+        //userid is equals to author id for reference see the token generation api.
         if (decodedUserToken.userId == BlogUser.authorId) {
 
             let blogId = req.params.deleteId
@@ -127,6 +127,7 @@ const DeleteBlogsbyQuery = async function (req, res) {
         res.status(500).send({ status: false, message: err.message })
     }
 }
+
 
 module.exports.createBlogs = createBlogs
 module.exports.DeleteBlogs = DeleteBlogs
